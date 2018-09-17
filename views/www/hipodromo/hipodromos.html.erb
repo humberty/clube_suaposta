@@ -1,0 +1,40 @@
+  <!-- modal modalCourses -->
+  <div class="modal fade" id="modalCourses" tabindex="-1" role="dialog" aria-labelledby="modalCourses" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Hipódromos/Courses</h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel-group" id="accordion">
+            <% Pais.all.sort_by {|item| item.nome}.each_with_index do |pais,i| %>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" class="collapsed" aria-expanded="false">
+                       <%= pais.nome %> <span class="<%= pais.nome %>">0</span>/<%= pais.hipodromo.count %> <i class="fa fa-caret-right"></i>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse<%= i %>" class="panel-collapse collapse" aria-expanded="false">
+                  <div class="panel-body">
+                    <div class="col-sm-12">
+                      <% pais.hipodromo.each do |hip| %>
+                        <div class="col-sm-3">
+                          <input type="checkbox" class="restriction_input courses" group="<%= pais.id %>" name="hipodromo_ids[]" value="<%= hip.id %>" <%= "checked" if @campanha.hipodromo_ids.include? hip.id if @method == 'patch' %> > <%= hip.nome %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="salvar-courses" data-dismiss="modal">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>

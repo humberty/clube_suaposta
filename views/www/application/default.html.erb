@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ <meta charset="UTF-8" http-equiv="Content-Type"  content="text/html,UTF-8"/>
+
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#fbb500">
+  <title>Clube | SUAPOSTA</title>
+  <meta name="description" content="Participe do nosso clube de fidelidade e ganhe bônus para apostar.">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <noscript><link rel="stylesheet" href="dist/css/style.min.css"></noscript>
+  <link rel="stylesheet" href="dist/css/style.min.css">
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+  <noscript><link rel="stylesheet" href="dist/css/bootstrap.min.css"></noscript>
+    <link rel="stylesheet" type="text/css" href="dist/css/normatize.min.css">
+  <noscript><link rel="stylesheet" type="text/css" href="dist/css/normatize.min.css"></noscript>
+  <link rel="stylesheet" href="dist/css/page.min.css">
+  <noscript><link rel="stylesheet" href="dist/css/page.min.css"></noscript>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Open+Sans:300,400,600,700,800" rel="stylesheet" media="none" onload='"all"!=media&&(media="all")'>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i|Open+Sans:300,400,600,700" rel="stylesheet" media="none" onload='"all"!=media&&(media="all")'>
+  <link rel="stylesheet" type="text/css" href="dist/css/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="dist/css/owl.theme.default.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>-->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+
+    <!-- data picker -->
+    <script src="dist/js/moment.min.js"></script>
+    <script src="js/collapse.js"></script>
+    <script src="js/transition.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+
+
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/default.js"></script>
+
+
+  <script>/*
+    dependencies:
+    //cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js
+    //maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js
+    //cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js
+    */
+    //# sourceURL=pen.js
+  </script>
+</head>
+<body>
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPF9Z4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <%= erb "www/application/header.html".to_sym %>
+
+
+  <!-- desktop -->
+  <section id="home-bonus" class="section background gray padding">
+  <div class="container">
+    <div class="row">
+      <div class="hidden-xs col-md-3 col-sm-3 col-lg-3" id="perfil">
+        <%= erb "www/user/perfil.html".to_sym %>
+        <% if @admin %>
+          <%= erb "www/menu/admin.html".to_sym %>
+        <% else %>
+          <%= erb "www/menu/menu.html".to_sym %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="default">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</section>
+  <%= erb "www/application/footer.html".to_sym %>
+  <script src="js/menu-mobile.js"></script>
+</body>
+</html>

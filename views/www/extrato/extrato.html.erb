@@ -1,0 +1,112 @@
+<script src="js/picker.js"></script>
+  <div class="default-container" id="extrato-pontos">
+  	<h2>Extrato</h2>
+  	<div class="row">
+  		<div class="col-lg-12">
+     <table class="table table-hover hidden-sm hidden-md hidden-lg">
+      <thead>
+       <tr>
+        <th tabindex="0" id="15dd"><a href="/extrato?days_ago=15" target="_parent">Últimos 15 dias</a></th>
+        <th tabindex="0" id="30dd"><a href="/extrato?days_ago=30" target="_parent">Últimos 30 dias</a></th>
+        <th tabindex="0" id="calendar-mob">Calendário</th>
+       </tr>
+      </thead>
+     </table>
+
+
+     <table class="table table-hover hidden-sm hidden-md hidden-lg">
+      <thead>
+       <tr>
+        <th id="calendar-extrato" class="ativo" style="display: none !important;"></th>
+        <th id="calendar-extrato" class="none">
+         <div>
+          <div class="input-group date " id="datetimepicker10">
+          <input type="text" class="form-control" placeholder="data inicial" value="">
+          <span class="input-group-addon">
+           <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+          </div>
+         </div>
+        </th>
+        <th id="calendar-extrato" class="calendar-dates none">
+         <div >
+           <div class="input-group date " id="datetimepicker11">
+              <input type="text" class="form-control" placeholder="data final" value="">
+              <span class="input-group-addon">
+               <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+           </div>
+         </div>
+        </th>
+       </tr>
+			 <tr>
+				<th colspan="2" id="calendar-extrato-mob">
+					<a id="capturadatamob" class="capturadata btn btn-default">Ir</a>
+				</th>
+			</tr>
+      </thead>
+     </table>
+
+     <table class="table table-hover hidden-sm hidden-md hidden-lg">
+      <thead>
+       <tr>
+        <th>Data</th>
+        <th>Procedência</th>
+        <th>Valor</th>
+       </tr>
+      </thead>
+     </table>
+
+     <table class="table table-hover" id="extrato-conteudo">
+      <thead class="hidden-xs">
+       <tr>
+       <th tabindex="0" id="15dd"><a href="/extrato?days_ago=15" target="_parent">Últimos 15 dias</a></th>
+        <th tabindex="0" id="30dd"><a href="/extrato?days_ago=30" target="_parent">Últimos 30 dias</a></th>
+        <th tabindex="0" id="calendar">Calendário</th>
+       </tr>
+       <tr class="hidden-xs">
+        <th></th>
+        <th id="calendar-extrato"></th>
+        <th id="calendar-extrato" class="calendar-dates none">
+         <div class="col-xs-5">
+          <div class="input-group date " id="datetimepicker8">
+              <input type="text" class="form-control" placeholder="data inicial" value="">
+              <span class="input-group-addon">
+               <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+             </div>
+          </div>
+          <div class="col-xs-5">
+              <div class="input-group date " id="datetimepicker9">
+                 <input type="text" class="form-control" placeholder="data final" value="">
+                 <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                 </span>
+              </div>
+          </div>
+					<a id="capturadata" class="btn btn-default capturadata col-xs-2" >Ir</a>
+        </th>
+       </tr>
+       <tr>
+          <th>Data</th>
+          <th>Procedência</th>
+          <th>Valor</th>
+       </tr>
+      </thead>
+      <tbody>
+	    <% @extrato.each do |e| %>
+	      <%= e.invoice_row %>
+	    <% end %>
+      <% unless @sem_saldo %>
+  	    <tr id="date">
+  	      <td><%#= Time.now.strftime('%d/%m %H:%M:%S') %></td>
+  	      <td>Saldo</td>
+  	      <td><%= Helper.format_point @user.saldo_pontos %></td>
+  	    </tr>
+      <% end %>
+	   </tbody>
+     </table>
+     <%= erb "www/application/pagination.html".to_sym, locals: {to_paginate: @extrato, to_link: '/extrato'} %>
+    </div>
+   </div>
+  </div>

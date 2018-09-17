@@ -1,0 +1,24 @@
+<!-- modal modalPools-->
+
+<div class="modal fade" id="modalPools" tabindex="-1" role="dialog" aria-labelledby="modalPools" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modalidades/Pools</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-12">
+          <% Modalidade.all.each do |mod| %>
+            <div class="col-sm-3">
+              <input type="checkbox" class="restriction_input pools" name="modalidade_ids[]" value="<%= mod.id %>" <%= "checked" if @campanha.modalidade_ids.include? mod.id if @method == 'patch' %> ><%= mod.nome %></input>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-default" id="salvar-pools" data-dismiss="modal">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

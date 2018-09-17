@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="dist/css/bootstrap-select.css">
+<script src="dist/js/bootstrap-select.js"></script>
+<script src="./js/preferencias.js"></script>
+<div class="default-container" id="preferences">
+  <h2>Preferências</h2>
+  <div class="row" id="pref-id">
+    <p>Selecione onde você gosta de apostar para receber informações exclusivas:</p>
+    <form class="form-horizontal" method="post" action="/preferencias" role="form" id="">
+      <div class="form-group">
+        <div class="col-lg-12">
+          <div class="col-lg-6">
+            <select name="pai_ids[]" id="country" class="selectpicker form-control input-lg show-menu-arrow"  multiple data-max-options="3" title="Selecione o País">
+              <% Pais.all.each_with_index do |pais,i| %>
+                <option name="pai_ids[]" value="<%= pais.id %>" <%= "selected" if @user.pai_ids.include? pais.id %> ><%= pais.nome %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="col-lg-6">
+            <select name="hipodromo_ids[]" id="hipodromos" class="selectpicker form-control input-lg show-menu-arrow"  multiple data-max-options="5" title="Selecione o Hipódromo">
+              <% Hipodromo.all.each do |hip| %>
+                <option name="hipodromo_ids[]" value="<%= hip.id %>" <%= "selected" if @user.hipodromo_ids.include? hip.id %> ><%= hip.nome %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-lg-12" id="canais">
+           <p>Escolha como quer receber o conteúdo:</p>
+           <div class="col-lg-6 ">
+              <select name="canal_atendimento_ids[]" id="canais_preferencias" class="selectpicker form-control input-lg show-menu-arrow"  multiple data-max-options="5" title="Selecione o Canal">
+                <% CanalAtendimento.all.each do |canal_atendimento| %>
+                  <option name="canal_atendimento_ids[]" value="<%= canal_atendimento.id %>" <%= "selected" if @user.canal_atendimento_ids.include? canal_atendimento.id %> ><%= canal_atendimento.nome %></option>
+                <% end %>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-default save">Salvar</button>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

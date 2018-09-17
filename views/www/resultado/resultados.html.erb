@@ -1,0 +1,25 @@
+<!-- modal modalResults -->
+
+<div class="modal fade" id="modalResults" tabindex="-1" role="dialog" aria-labelledby="modalResults" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Resultado/Result</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <input type="radio" class="restriction_input results" name="ticket_vencedor" value="S" <%= "checked" if @campanha.ticket_vencedor == "S" if @method == 'patch' %> >Win
+          </div>
+          <div class="col-sm-6">
+            <input type="radio" class="restriction_input results" name="ticket_vencedor" value="N" <%= "checked" if @campanha.ticket_vencedor == "N" if @method == 'patch' %> >Lose
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="salvar-results" data-dismiss="modal">Salvar</button>
+        </div>
+    </div>
+  </div>
+</div>

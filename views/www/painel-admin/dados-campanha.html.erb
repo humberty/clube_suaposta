@@ -1,0 +1,64 @@
+<div class="form-group">
+  <label for="inputEmail3" class="col-xs-12 col-sm-12 control-label">Dados da Campanha</label>
+</div>
+<div class="form-group">
+  <label for="inputEmail3" class="col-xs-12 col-sm-4 control-label">Titulo</label>
+  <div class="input-group col-xs-12 col-sm-8">
+    <input type="text" class="form-control" name="titulo" placeholder="Titulo" value="<%= @campanha.titulo if @method == 'patch' %>" required>
+  </div>
+</div>
+<div class="form-group">
+  <label for="descricao_campanha" class="col-xs-12 col-sm-4 control-label">Descrição</label>
+  <div class="input-group col-xs-12 col-sm-8">
+    <textarea name="descricao" class="form-control" rows="3" placeholder="Descrição da Campanha" ><%= @campanha.descricao if @method == 'patch' %></textarea>
+  </div>
+</div>
+<div class="form-group">
+  <label for="inputEmail3" class="col-xs-12 col-sm-4 control-label">Budget da Campanha</label>
+  <div class="input-group col-xs-12 col-sm-8">
+    <input type="number" class="form-control" name="budget" placeholder="Pontos Máximos até pausar" value="<%= @campanha.budget if @method == 'patch' %>" required>
+  </div>
+ </div>
+<div class="form-group" id="date-pick">
+  <label for="data-campanha" class="col-xs-12 col-sm-4 control-label">Data de Inicio e Fim</label>
+  <div class='col-xs-12 col-md-4'>
+    <div class="form-group">
+      <div class='input-group date' id='datetimepicker6'>
+        <input type='text' class="form-control" name="dt_ini" value="<%= @campanha.dt_ini.strftime('%d/%m/%Y %H:%M:%S') if @method == 'patch' && @campanha.dt_ini %>" required />
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class='col-xs-12 col-md-4'>
+    <div class="form-group">
+      <div class='input-group date' id='datetimepicker7'>
+        <input type='text' class="form-control" name="dt_fim" value="<%= @campanha.dt_fim.strftime('%d/%m/%Y %H:%M:%S') if @method == 'patch' && @campanha.dt_fim %>" required/>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <label for="inputEmail3" class="col-xs-12 col-sm-4 control-label">Link de Destino</label>
+  <div class="input-group col-xs-12 col-sm-8">
+    <input type="text" class="form-control" name="link" placeholder="Ex: http://exemplo.com" value="<%= @campanha.link if @method == 'patch' %>" required>
+  </div>
+</div>
+<div class="form-group">
+  <label for="inputEmail3" class="col-xs-12 col-sm-4 control-label">Imagem da Promo (URL)</label>
+  <div id="" class="input-group col-xs-12 col-md-8">
+    <input type="text" class="form-control" name="image_url" placeholder="Ex: http://exemplo.com/image.jpg" value="<%= @campanha.image_url if @method == 'patch' %>" required>
+  </div>
+</div>
+<div class="form-group">
+  <label for="inputEmail3" class="col-xs-12 col-sm-4 control-label">Desativar/Ativar</label>
+  <div class="switch__container col-xs-12 col-md-4">
+    <input type='hidden' value='0' name='ativada'>
+    <input id="switch-shadow" class="switch switch--shadow" name="ativada" type="checkbox" <%= "checked" if @method == 'patch' && @campanha.ativada %> >
+    <label for="switch-shadow"></label>
+  </div>
+</div>

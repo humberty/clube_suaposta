@@ -1,0 +1,43 @@
+<section id="home-bg" class="section padding hidden-xs">
+  <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="menu-nav">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="https://www.suaposta.com.br/apostas-avancadas?utm_source=lp_maratona_de_apostas&utm_medium=logo" target="_blank">
+            <img alt="SuaPosta" title="SuaPosta" src="./imgs/logo.png">
+          </a>
+        </div>
+        <span class="menu hidden-lg hidden-sm hidden-md" id="menu-mob">Menu</span>
+        <ul class="nav navbar-nav pull-right hidden-xs visible-lg visible-md visible-sm" id="menu-nav-desk">
+          <li><a href="/home" class="scroll2">INÍCIO</a></li>
+          <li><a href="/como-funciona.html" class="scroll">COMO FUNCIONA</a></li>
+          <li><a href="/regulamento.html" class="scroll">REGULAMENTO</a></li>
+          <li><a href="/faq.html" class="scroll">F.A.Q</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
+  <!-- mobile -->
+  <section id="home-bg" class="section padding hidden-sm hidden-md hidden-lg">
+    <div class="noblack-jack" id="black-jack"></div>
+    <div class="mobmenu" id="menu-mobile">
+      <div class="menu">
+         <%= erb "www/user/perfil.html".to_sym %>
+        <ul>
+          <% if @admin %>
+            <%= erb "www/menu/admin_mob.html".to_sym %>
+          <% else %>
+            <%= erb "www/menu/menu_mob.html".to_sym %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+      <header id="ust">
+          <a href="/home"></a>
+          <div id="menuac">
+              <span></span>
+          </div>
+      </header>
+  </section>

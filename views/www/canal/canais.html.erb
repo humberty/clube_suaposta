@@ -1,0 +1,23 @@
+<div class="modal fade" id="modalChannel" tabindex="-1" role="dialog" aria-labelledby="modalChannel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Canais/Channels</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-12">
+          <% Canal.all.each do |canal| %>
+            <div class="col-sm-6">
+              <input type="checkbox" class="restriction_input channel" name="canal_ids[]" value="<%= canal.id %>" <%= "checked" if @campanha.canal_ids.include? canal.id if @method == 'patch' %> ><%= canal.nome %>
+              </input>
+            </div>
+          <% end %>
+        </div>
+      </div>
+     <div class="modal-footer">
+         <button type="button" class="btn btn-default" id="salvar-channel" data-dismiss="modal">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

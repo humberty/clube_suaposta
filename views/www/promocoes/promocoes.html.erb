@@ -1,0 +1,16 @@
+<div class="default-container" id="promocao-home">
+ <h2>Promoções</h2>
+ <div class="tab-content">
+   <div class="tab-pane cc-list-tab" id="promo-grid" aria-live="polite">
+    <% @promocoes.each do |promocao| %>
+     <%= erb "www/promocoes/promocoes_item.html".to_sym, :locals => {:promocao => promocao}%>
+    <% end %>
+   </div>
+   <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 text-center">
+     <a href="/promocoes" class="btn btn-link btn-lg" role="button" id="maispromocoes">Ver mais promoções.</a>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>

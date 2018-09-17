@@ -1,0 +1,24 @@
+  <!-- modal modalRaces-->
+  <div class="modal fade" id="modalRaces" tabindex="-1" role="dialog" aria-labelledby="modalRaces" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Páreos/Races</h4>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12">
+            <% Pareo.all.each do |pareo| %>
+              <div class="col-sm-3">
+                <input type="checkbox" class="restriction_input races" name="pareo_ids[]" value="<%= pareo.id %>" <%= "checked" if @campanha.pareo_ids.include? pareo.id if @method == 'patch' %> > <%= pareo.nome %>
+                </input>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="salvar-races" data-dismiss="modal">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,31 @@
+<div class="perfil-container">
+  <% unless @admin %>
+  <div class="circle-interno <%= @user.categoria.nome.downcase %>-border">
+    <img class="img-responsive" src="/imgs/<%= @user.categoria.nome.downcase %>.png"/>
+  </div>
+  <div class="username">
+    <p><%= @user.username %></p>
+    <p><span>Nível: </span> <span class="text-left" href="#" id="nivel"><%= @user.categoria.nome %></span></p>
+  </div>
+  <% end %>
+  <% if @admin %>
+  <div class="circle-interno <%= @user.categoria.nome.downcase %>-border">
+    <img class="img-responsive admin" src="/imgs/admin.png"/>
+  </div>
+  <div class="username">
+    <p><%= @user.username %></p>
+    <p><span>Nível: </span> <span class="text-left" href="#" id="nivel">Admin</span></p>
+  </div>
+  <% end %>
+  
+  <% unless @admin %>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: <%= @user.categoria_width_bar %>%">
+      </div>
+      <span class="status-progress <%= @user.categoria.succ ? @user.categoria.succ.nome.downcase : @user.categoria.nome.downcase %>" id=""></span>
+    </div>
+    <span class="initial-bar" value=""><%= Helper.format_point @user.saldo_categoria %></span>
+    <span class="final-bar" value=""><%= Helper.format_point @user.categoria_final_bar if @user.categoria.succ %></span>
+    <p class="saldo" aria-live="assertive"><span>Saldo: </span><span><%= Helper.format_point @user.saldo_pontos.to_s %></span><i class="icon-point"></i></p>
+  <% end %>
+</div>

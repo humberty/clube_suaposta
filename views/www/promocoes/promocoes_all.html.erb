@@ -1,0 +1,12 @@
+<div class="default-container" id="promocao-home">
+ <h2>Promoções</h2>
+ <div class="tab-content">
+   <div class="tab-pane cc-list-tab" id="promo-grid" aria-live="polite">
+    <% @promocoes.each do |promocao| %>
+     <%= erb "www/promocoes/promocoes_item.html".to_sym, :locals => {:promocao => promocao}%>
+    <% end %>
+   </div>
+   <%= erb "www/application/pagination.html".to_sym, locals: {to_paginate: @promocoes, to_link: '/promocoes'} %>
+  </div>
+ </div>
+</div>

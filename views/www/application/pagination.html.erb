@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-lg-12 text-right">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link <%= "disable" if to_paginate.current_page.to_i == 1 %>" href="<%= to_link %>?page=<%= (to_paginate.current_page.to_i - 1) %>&<%= add_current_query_string %>" aria-label="Previous">
+          <span aria-hidden="true">«</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <% ([0,(to_paginate.current_page.to_i-3)].max..[to_paginate.total_pages-1,(to_paginate.current_page.to_i+1)].min).each do |i| %>
+        <li <%= 'class="active"' if to_paginate.current_page.to_i == i+1 %>>
+          <a href="<%= to_link %>?page=<%= i+1 %>&<%= add_current_query_string %>"><%= i+1 %></a>
+        </li>
+      <% end %>
+      <li class="page-item">
+        <a class="page-link <%= "disable" if to_paginate.current_page.to_i == to_paginate.total_pages %>" href="<%= to_link %>?page=<%= (to_paginate.current_page.to_i + 1) %>&<%= add_current_query_string %>" aria-label="Next">
+          <span aria-hidden="true">»</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

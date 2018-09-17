@@ -1,0 +1,5 @@
+<tr id="date">
+  <td><%= self.data.strftime('%d/%m') %></td>
+  <td>Saque<%= " Pendente" if self.status == "Pendente" %><%= " Estornado" if self.estorno %></td>
+  <td class="debito"><%= self.pontos.to_s %></td>
+</tr>

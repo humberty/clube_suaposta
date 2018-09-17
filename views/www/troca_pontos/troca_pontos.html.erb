@@ -1,0 +1,75 @@
+<script src="js/pontos.js"></script>
+<div class="default-container" id="troca-pontos-home">
+ <h2>Troca Pontos</h2>
+ <div class="row">
+   <div class="large-12 columns"></div>
+ </div>
+ <div class="owl-carousel owl-theme">
+  <% @troca_pontos.each_with_index do |tp,i| %>
+   <div class="item  <%= "disabled" if @user.saldo_pontos < tp.pontos %>">
+    <label class="magic-body bnpontos<%= " actived" if i == 0 %>" id="bn<%= i+1 unless i == 0%>">
+     <div class="magic magic-option one">
+      <input type="radio" troca-pontos-id="<%= tp.id %>" value="<%= Helper.format_money(tp.dinheiro,0) %>" name="btn" checked="">
+       <p for="radio1" class="magic-option-title"><strong><%= Helper.format_point(tp.pontos) %></strong></p>
+     </div>
+     <ul>
+      <li class="magic-option-list-item text-center">
+       <span class="magic-option-list-item-text">
+        <strong><%= Helper.format_money(tp.dinheiro,0) %></strong>
+       </span>
+      </li>
+     </ul>
+    </label>
+   </div>
+  <% end %>
+ </div>
+ <div class="col-lg-12 text-center">
+   <div class="col-lg-6 col-lg-offset-3">
+     <button type="button" class="btn btn-default" id="pegar-valor" name="pegarvalor" value="" data-toggle="modal" data-target="#modalTrocaPontos">TROCAR</button>
+      	<a href="extrato" class="btn btn-link btn-lg" role="button" id="confira_extrato">Confira seu extrato.</a>
+   </div>
+  </div>
+  <!-- modal aviso -->
+    <div class="modal fade" id="modalTrocaPontos" tabindex="-1" role="dialog" aria-labelledby="modalTrocaPontos" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title" id="myModalLabel">Você tem certeza? </h4>
+           </div>
+           <div class="modal-body">
+               <!--<p class="">Pontos: <span id="confirmaPontos">xxx</span></p>!-->
+               <p class="text-center">Valor de Bônus: <span id="confirmaBonus">xxx</span></p>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+             <button type="button" class="btn btn-default" id="salvar-apostas-quantia" data-dismiss="modal">Sim</button>
+           </div>
+         </div>
+       </div>
+    </div>
+    <div class="modal fade" id="modalTrocaPontosError" tabindex="-1" role="dialog" aria-labelledby="modalTrocaPontos" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+           </div>
+           <div class="modal-body">
+                <p class="text-center">Pontos Insuficientes</p>
+           </div>
+         </div>
+       </div>
+    </div>
+   <div class="modal fade" id="modalTrocaPontosSuccess" tabindex="-1" role="dialog" aria-labelledby="modalTrocaPontos" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+           </div>
+           <div class="modal-body">
+                <p class="text-center">Resgate realizado</p>
+           </div>
+         </div>
+       </div>
+    </div>
+</div>
